@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIとの会話</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="./css/AI/style.css">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta name="author" content="Arcana">
+    <meta name="description" content="AIを活用したシンプルな会話型chatです。">
+    <meta name="keywords" content="Arcana, novaAI, AI ,NovaAI">
+</head>
+
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+
+        <a class="navbar-item" href="Home.html">
+            <img src="./img/AI/ai.jpg" alt="ロゴ" width="28" height="28">
+        </a>
+        <div class="navbar-start">
+            <a class="navbar-item" href="Home.html">ホーム</a>
+            <a class="navbar-item" href="search.html">検索</a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">アプリ</a>
+                <div class="navbar-dropdown">
+                    <a class="navbar-item" href="mail.html">メール</a>
+                    <a class="navbar-item" href="https://calendar.google.com" target="_blank">カレンダー</a>
+                    <a class="navbar-item" href="https://maps.google.com" target="_blank">マップ</a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item">すべてのアプリ</a>
+                </div>
+            </div>
+        </div>
+        <div class="navbar-item">
+            <nav class="breadcrumb" aria-label="breadcrumbs">
+                <ul>
+                    <li>
+                        <a href="https://twitter.com/securityKey0426" target="_blank">
+                            <span class="icon is-small">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span>X</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/yoidea-github" target="_blank">
+                            <span class="icon is-small">
+                                <i class="fab fa-github"></i>
+                            </span>
+                            <span>GitHub</span>
+                        </a>
+                    </li>
+                    <li class="is-active">
+                        <a href="#">
+                            <span class="icon is-small">
+                                <i class="fas fa-thumbs-up" aria-hidden="true"></i>
+                            </span>
+                            <span>Breadcrumb</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    <span class="icon">
+                        <i class="ion-icon ion-md-notifications-outline"></i>
+                    </span>
+                    <span>3件の通知</span>
+                </a>
+                <div class="navbar-dropdown">
+                    <a class="navbar-item" href="mail.html" target="_blank">
+                        <p>Mail app</p>
+                        <p>Googleからのお知らせ</p>
+                    </a>
+                    <a class="navbar-item" href="https://calendar.google.com" target="_blank">
+                        <p>カレンダー app</p>
+                        <p>明日10:00に会社</p>
+                    </a>
+                    <a class="navbar-item" href="https://maps.google.com" target="_blank">
+                        <p>map</p>
+                        <p>位置情報を共有しますか？</p>
+                    </a>
+                </div>
+            </div>
+            <a class="navbar-item">設定</a>
+            <a class="navbar-item" href="login.html">
+                <span class="icon">
+                    <i class="ion-icon ion-md-log-out"></i>
+                </span>
+                <span>サインアウト</span>
+            </a>
+        </div>
+        </div>
+    </nav>
+
+    <!-- HTMLコンテンツ -->
+    <section class="section">
+        <div class="container">
+            <h1 class="title">AIとの会話</h1>
+            <div id="conversation" class="box"></div>
+            <div class="field is-grouped">
+                <div class="control input-container">
+                    <div>
+                        <input type="text" id="commentInput" class="input" placeholder="コメント">
+                        <button id="startButton" class="button is-info"><i class="fas fa-microphone"></i></button>
+                        <button id="stopButton" class="button is-danger stop-button is-hidden"><i
+                                class="fas fa-stop"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScriptコード -->
+    <script>
+        const conversation = document.getElementById('conversation');
+        const commentInput = document.getElementById('commentInput');
+        const startButton = document.getElementById('startButton');
+        const stopButton = document.getElementById('stopButton');
+        const recognition = new webkitSpeechRecognition();
+        recognition.continuous = true;
+        recognition.lang = 'ja';
+
+        // 音声入力開始時の処理
+        startButton.addEventListener('click', function () {
+            recognition.start();
+            startButton.classList.add('is-hidden'); // ボタンを非表示
+            stopButton.classList.remove('is-hidden'); // ボタンを表示
+            // 10秒後に音声入力を停止する
+            setTimeout(function () {
+                recognition.stop();
+                stopButton.classList.add('is-hidden'); // ボタンを非表示
+                startButton.classList.remove('is-hidden'); // ボタンを表示
+            }, 10000); // 10秒後に停止
+        });
+
+        // 音声入力停止時の処理
+        stopButton.addEventListener('click', function () {
+            recognition.stop();
+            stopButton.classList.add('is-hidden'); // ボタンを非表示
+            startButton.classList.remove('is-hidden'); // ボタンを表示
+        });
+
+        // 音声認識エラー時の処理
+        recognition.onerror = function (event) {
+            console.error('音声認識エラー:', event.error);
+        };
+
+        // 音声認識結果取得時の処理
+        recognition.onresult = function (event) {
+            const result = event.results[event.results.length - 1][0].transcript;
+            addMessage('ユーザー', result);
+            respondToUser(result);
+        };
+
+        // 通知を追加する関数
+        function addNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'notification is-info';
+            notification.innerHTML = message;
+            conversation.appendChild(notification);
+            // 10秒後に通知を削除する
+            setTimeout(function () {
+                notification.remove();
+            }, 10000);
+        }
+
+        // 音声入力が有効になったときの通知
+        function showVoiceInputNotification() {
+            addNotification('音声入力が有効になりました。');
+        }
+
+        // 音声入力が終了したときの通知を消す
+        function hideVoiceInputNotification() {
+            const notification = conversation.querySelector('.notification');
+            if (notification) {
+                notification.remove();
+            }
+        }
+
+        // 音声認識のイベントリスナー
+        recognition.onstart = function () {
+            showVoiceInputNotification(); // 音声入力が有効になった通知を表示
+        };
+
+        recognition.onend = function () {
+            hideVoiceInputNotification(); // 音声入力が終了したら通知を消す
+        };
+
+
+        function addMessage(sender, message, isInitialMessage = false) {
+            if (!message || !message.trim()) return; // 修正箇所
+
+            let avatarImage;
+            if (sender === 'AI') {
+                avatarImage = '<img src="./img/AI/ai.jpg" alt="AI Avatar" class="ai-avatar">';
+            } else {
+                avatarImage = '<img src="./img/AI/user.jpg" alt="User Avatar" class="user-avatar">';
+            }
+
+
+            const previousMessage = conversation.querySelector('.typing-animation');
+            if (previousMessage) {
+                previousMessage.remove();
+            }
+
+            // 画面幅を取得
+            const screenWidth = window.innerWidth;
+
+            // 画面幅が1024ピクセル以下の場合はナビゲーションバーを非表示にする
+            if (screenWidth <= 1024) {
+                const navBar = document.querySelector('.navbar');
+                navBar.style.display = 'none';
+            }
+
+            const messageBox = document.createElement('div');
+            messageBox.className = 'conversation-box';
+            const now = new Date();
+            const formattedTime = `${now.getHours()}時${now.getMinutes()}分`;
+
+            // メッセージがAIからのものであれば、黒い丸のアニメーションを追加
+            let messageContent;
+            if (sender === 'AI') {
+                messageContent = `<div class="typing-animation"></div>`;
+            } else {
+                messageContent = `<span>${message}</span>`;
+            }
+
+            messageBox.innerHTML = `${avatarImage}${messageContent}<p style="font-size: 0.8rem; color: #888;">${formattedTime}</p>`;
+
+            if (!isInitialMessage) {
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = '削除';
+                deleteButton.className = 'delete-button button is-small is-danger';
+                deleteButton.onclick = function () {
+                    messageBox.remove();
+                };
+                messageBox.appendChild(deleteButton);
+            }
+
+            // 会話ボックスにメッセージを追加
+            conversation.appendChild(messageBox);
+
+            // AIの応答が完了したら、黒い丸のアニメーションを削除
+            if (sender === 'AI') {
+                setTimeout(function () {
+                    const typingAnimation = messageBox.querySelector('.typing-animation');
+                    if (typingAnimation) {
+                        typingAnimation.remove();
+                        messageBox.innerHTML = `${avatarImage}<span>${message}</span><p style="font-size: 0.8rem; color: #888;">${formattedTime}</p>`;
+                    }
+                }, 1000); // 1秒後に削除
+            }
+        }
+
+        commentInput.addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                const comment = commentInput.value.trim();
+                if (comment !== '') {
+                    addMessage('ユーザー', comment);
+                    respondToUser(comment);
+                    commentInput.value = ''; // ここでテキスト欄を空にする
+                }
+            }
+        });
+
+        //weather.jsに情報を記述
+        addMessage('AI', 'NovaAIが何でもお手伝いします。', true);
+    </script>
+</body>
+<script src="https://kit.fontawesome.com/be33907dac.js" crossorigin="anonymous"></script>
+<script src="./js/AI/weather.js"></script>
+<script src="./js/AI/music.js"></script>
+<script src="./js/AI/message.js"></script>
+
+</html>
