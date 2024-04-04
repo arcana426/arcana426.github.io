@@ -13,14 +13,34 @@ Click here for information from the official website. <br>
   </tfooter>
   <tr>
     <td>
-      ・English available<br>
-      ・Japanese support<br>
-      ・Easy to understand UI<br>
-      ・AI functions can be used<br>
-      ・World-class security as it is a site supported by Google development<br>
+      ・English support
+    </td>
+      </tr>
+  <tr>
+    <td>
+      ・Japanese support
+    </td>
+    </tr>
+  <tr>
+    <td>
+      ・World-class security because of google
+    </td>
+    </tr>
+  <tr>
+    <td>
+      ・Easy to understand UI
+    </td>
+    </tr>
+  <tr>
+      <td>
+      ・AI functions can be used
+      </td>  
+    </tr>
+  <tr>
+    <td>
       ・Issuance of use permit
     </td>
-  </tr>
+    </tr>
 </table>
 
 [Site coming soon](https://sites.google.com)
