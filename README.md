@@ -44,3 +44,6 @@ Click here for information from the official website. <br>
 </table>
 
 [Site coming soon](https://sites.google.com)
+
+[Click here to visit the site where you can experience chrononoteAI.](arcana426.github.io)
+
