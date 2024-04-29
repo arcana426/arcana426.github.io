@@ -87,7 +87,6 @@ function escapeHtml(unsafeText) {
 
 function calculateExpression(expression) {
     try {
-        // evalを使用して式を評価
         return eval(expression);
     } catch (error) {
         console.error('Computational Errors:', error);
