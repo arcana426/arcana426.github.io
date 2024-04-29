@@ -54,22 +54,28 @@ function respondToUser(comment) {
         aiResponse = 'Mr. arcana is one of the people who made me. I am arcana426 and chatGPT3.5.';
     } else if (comment.includes('Change Log')) {
         aiResponse = 'Click here for updated record<br>https://arcana426.github.com/en-us/change-log.md';
-    } else if (comment.includes('最新のメールは')) {
-        aiResponse = '新しいメールは2件です。<br><strong>メール1</strong><br><strong>From Arcana team</strong><br>user様へ<br>アカウント登録が完了しました。<strong><br>メール2</strong><br><strong>Microsoft Git hubチームから</strong></strong><br>Yoidea様へ<br>アカウント登録が完了しました。<br>';
-    } else if (comment.includes('ChrononoteAI')) {
-        aiResponse = '何かようですか？<br>ゆっくりしていってください。';
-    } else if (comment.includes('今日の予定は')) {
-        aiResponse = '今日の予定は以下の通りです。<br>・10:00 - 会議<br>・13:00 - ランチ<br>・15:00 - プレゼン準備';
-    } else if (comment.includes('を再生して')) {
-        const keyword = comment.split('を再生して')[0].trim();
-        playMusic(keyword);
-        return
-    } else if (comment.includes('を計算して')) {
-        const expression = comment.replace('を計算して', '').trim();
+    } else if (comment.includes('The email is')) {
+        aiResponse = 'The email is <br>[outlook](https://outlook.com)<br>[Gmail](https://mail.google.com)';
+    } else if (comment.includes('the email is')) {
+        aiResponse = 'The email is <br>[outlook](https://outlook.com)<br>[Gmail](https://mail.google.com)';
+    } else if (comment.includes('The Email is')) {
+        aiResponse = 'The email is <br>[outlook](https://outlook.com)<br>[Gmail](https://mail.google.com)';
+    } else if (comment.includes('The Email is')) {
+        aiResponse = 'The email is <br>[outlook](https://outlook.com)<br>[Gmail](https://mail.google.com)';
+    } else if (comment.includes('Today's schedule is')) {
+        aiResponse = 'Take a look at Today's schedule! <br>[Google calendar](calendar.google.com)';
+    } else if (comment.includes('today's schedule is')) {
+        aiResponse = 'Take a look at today's schedule! <br>[Google calendar](calendar.google.com)';
+    } else if (comment.includes('today's Schedule is')) {
+        aiResponse = 'Take a look at today's Schedule! <br>[Google calendar](calendar.google.com)';
+    } else if (comment.includes('Today's Schedule is')) {
+        aiResponse = 'Take a look at Today's Schedule! <br>[Google calendar](calendar.google.com)';
+    } else if (comment.includes('Calculate the.')) {
+        const expression = comment.replace('Calculate the.', '').trim();
         const result = calculateExpression(expression);
-        aiResponse = `計算結果は${result}です。`;
+        aiResponse = `The result is ${result}.`;
     } else {
-        aiResponse = 'すみません、よくわかりませんでした。';
+        aiResponse = 'Sorry, I wasn't clear.';
     }
     addMessage('AI', aiResponse);
 }
@@ -79,13 +85,12 @@ function escapeHtml(unsafeText) {
 }
 
 
-// ユーザーの入力が数式であるかどうかを判定し、数式が有効であれば結果を計算して返す関数
 function calculateExpression(expression) {
     try {
         // evalを使用して式を評価
         return eval(expression);
     } catch (error) {
-        console.error('計算エラー:', error);
-        return 'できなかった';
+        console.error('Computational Errors:', error);
+        return 'error';
     }
 }
