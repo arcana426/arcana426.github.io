@@ -21,8 +21,10 @@ All notable changes to this project will be documented in this file.
 
 ### Security
 - Patch to fix SQL injection vulnerability.
-## [AI ver.1.2.1] - 2023-04-20
+## [AI ver.1.2.2] - 2023-04-22
 
+### Added
+-
 ## [AI ver.1.2.1] - 2023-04-20
 
 ### Changed 
@@ -53,6 +55,8 @@ UI has evolved to be easier to understand
 
 ### Added
 - Updated to say certain words and return certain.
+
+### changed
 - Minor typo in documentation.
 
 ## [AI ver.1.0.0] - 2023-04-10
