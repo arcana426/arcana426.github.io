@@ -21,15 +21,24 @@ All notable changes to this project will be documented in this file.
 
 ### Security
 - Patch to fix SQL injection vulnerability.
+## [AI ver.1.2.1] - 2023-04-20
 
+## [AI ver.1.2.1] - 2023-04-20
+
+### Changed 
+Changed first message text.
 ## [AI ver.1.2.0] - 2023-04-18
+
+### Added
 - Updated to show a stop button for typing if you are voice typing
 - Made the voice input and stop button a fontawesome icon.
 ### Major font Update
 UI has evolved to be easier to understand
 
 ## [AI ver.1.1.1] - 2023-04-16
-- Added initial message "I'm here to help you with anything you need." Added
+
+### Added
+- Added initial message "I'm here to help you with anything you need.
 - Added ability to delete comments
 
 ## [AI ver.1.1.0] - 2023-04-14
