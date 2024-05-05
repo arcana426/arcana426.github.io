@@ -4,9 +4,6 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-### Added
-- New user profile features.
-
 ### Changed
 - Update database migration to improve performance.
 
@@ -25,6 +22,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - When using the microphone, "Audio input is in use. is now displayed when using the microphone.
+- We have adopted .md for all folders and established the Terms of Use.
 
 ## [AI ver.1.2.1] - 2023-04-20
 ### Changed 
