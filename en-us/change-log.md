@@ -24,15 +24,19 @@ All notable changes to this project will be documented in this file.
 ## [AI ver.1.2.2] - 2023-04-22
 
 ### Added
--
-## [AI ver.1.2.1] - 2023-04-20
+- When using the microphone, "Audio input is in use. is now displayed when using the microphone.
 
+## [AI ver.1.2.1] - 2023-04-20
 ### Changed 
-Changed first message text.
+- Changed first message text.
+### Added
+- The comment text box display was made wider for PC view and narrower for smartphone view.
+
 ## [AI ver.1.2.0] - 2023-04-18
 
 ### Added
 - Updated to show a stop button for typing if you are voice typing
+### Changed
 - Made the voice input and stop button a fontawesome icon.
 ### Major font Update
 UI has evolved to be easier to understand
