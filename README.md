@@ -1,7 +1,8 @@
 # AI
 This file was created in just over a year. <br>
 We appreciate your continued support. <br>
-Only Japanese is supported for voice input in index.html.
+Japanese is supported for voice input in index.html.
+English is also supported for voice input in index.html
 # web site studio
 Click here for information from the official website. <br>
 <table class="table is-striped is-fullwidth">
