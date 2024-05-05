@@ -1,6 +1,5 @@
 # AI
 This file was created in just over a year. <br>
-Currently, the latest version of AI is beta version ver.1. <br>
 We appreciate your continued support. <br>
 Only Japanese is supported for voice input in index.html.
 # web site studio
