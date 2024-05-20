@@ -10,17 +10,21 @@
     <img src="./en-us/img/loading.gif">
 </body>
 <script>
-  window.onload = function() {
-
+window.onload = function() {
+    // ブラウザの言語設定を取得
     var userLang = navigator.language || navigator.userLanguage;
 
-
-    if (userLang.startsWith('ja')) {
-      
-        window.location.href = './ja-jp/index.html';
-    } else {
-        window.location.href = './en-us/index.html';
-    }
+    // 2秒待ってからリダイレクト
+    setTimeout(function() {
+        // 言語に基づいてリダイレクト先を決定
+        if (userLang.startsWith('ja')) {
+            // 日本語の場合 jp.html にリダイレクト
+            window.location.href = './ja-jp/index.html';
+        } else {
+            // それ以外の場合 us.html にリダイレクト
+            window.location.href = './en-us/index.html';
+        }
+    }, 2000); // 2000ミリ秒（2秒）
 };
 </script>
 </html>
