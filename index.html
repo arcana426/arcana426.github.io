@@ -3,28 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Language loading</title>
+    <title>Language Loading</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>loading</h1>
-    <img src="./img/loading.gif">
-</body>
-<script>
-window.onload = function() {
-    // ブラウザの言語設定を取得
-    var userLang = navigator.language || navigator.userLanguage;
+    <div class="container">
+        <h1>Loading...</h1>
+        <div class="loading-bar">
+            <div class="progress"></div>
+        </div>
+        <img src="./img/loading.gif" alt="Loading">
+    </div>
+    <script>
+        window.onload = function() {
+            // Get the browser's language setting
+            var userLang = navigator.language || navigator.userLanguage;
 
-    // 2秒待ってからリダイレクト
-    setTimeout(function() {
-        // 言語に基づいてリダイレクト先を決定
-        if (userLang.startsWith('ja')) {
-            // 日本語の場合 jp.html にリダイレクト
-            window.location.href = './ja-jp/index.html';
-        } else {
-            // それ以外の場合 us.html にリダイレクト
-            window.location.href = './en-us/index.html';
-        }
-    }, 100000); // 2000ミリ秒（2秒）
-};
-</script>
+            // Wait for 3 seconds before redirecting
+            setTimeout(function() {
+                // Determine the redirect destination based on language
+                if (userLang.startsWith('ja')) {
+                    // Redirect to jp.html for Japanese
+                    window.location.href = './ja-jp/index.html';
+                } else {
+                    // Redirect to us.html for other languages
+                    window.location.href = './en-us/index.html';
+                }
+            }, 3000); // 3000 milliseconds (3 seconds)
+        };
+    </script>
+</body>
 </html>
