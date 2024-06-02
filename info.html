@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reCAPTCHA Integration</title>
+    <!-- reCAPTCHA v2 スクリプト -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        #action-button {
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function onSubmit(token) {
+            // ボタンの有効化などの処理を行います
+            document.getElementById("action-button").disabled = false;
+        }
+    </script>
+</head>
+<body>
+    <h1>reCAPTCHA Example</h1>
+    <p>次のステップに進むには、reCAPTCHAのチェックボックスを確認してください。</p>
+    
+    <!-- reCAPTCHA チェックボックス -->
+    <div class="g-recaptcha" data-sitekey="6Lc9Du8pAAAAANVSAKtU-CZyoUbRxfGH-_bb8vKR" data-callback="onSubmit"></div>
+    
+    <!-- アクションボタン -->
+    <button id="action-button" onclick="alert('reCAPTCHA検証に成功しました！');" disabled>続ける</button>
+</body>
+</html>
