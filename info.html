@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
-    <title>reCAPTCHA</title>
+    <title>reCAPTURE</title>
     <style>
         /* バッジが表示されるか確認するためのスタイル */
         .grecaptcha-badge {
@@ -13,23 +14,33 @@
         }
     </style>
 </head>
+
 <body>
-    <h1>reCAPTCHA Example</h1>
-    <p>次のステップに進むには、reCAPTCHAのチェックボックスを確認してください。</p>
-    
-    <!-- reCAPTCHA チェックボックス -->
-    <div class="g-recaptcha" data-sitekey="6LfEzPApAAAAAD3L0-J-8C67MGTgi4TsqUF_wJpS" data-callback="onSubmit" data-badge="bottomright"></div>
-    
-    <!-- アクションボタン -->
-    <button class="button is-link" id="action-button" onclick="alert('reCAPTCHA検証に成功しました！<br>あなたは人間です。');" disabled>続ける</button>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">reCAPTCHA デモページ</h1>
+            <div class="box">
+                <div class="g-recaptcha" data-sitekey="6LfEzPApAAAAAD3L0-J-8C67MGTgi4TsqUF_wJpS"
+                    data-callback="onSubmit" data-badge="bottomright"></div>
+                <button class="button is-link" id="action-button" onclick="alert('reCAPTCHA検証に成功しました!<br>あなたは人間です。');"
+                    disabled>続ける</button>
+            </div>
+        </div>
+    </section>
 </body>
-        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-        <script>
-        function onSubmit(token) {
-            // ボタンの有効化などの処理を行います
-            document.getElementById("action-button").disabled = false;
-            // バッジが表示されるか確認
-            console.log("reCAPTCHA検証に成功しました！");
-        }
-    </script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LebyfApAAAAAOLwgEg2OrBa1rqo8bsacmRSNHMq"></script>
+<script>
+    window.addEventListener('load', function () {
+        grecaptcha.ready(function () {
+            grecaptcha.execute();
+        });
+    });
+    function onSubmit(token) {
+        // ボタンの有効化などの処理を行います
+        document.getElementById("action-button").disabled = false;
+        // バッジが表示されるか確認
+        console.log("reCAPTCHA検証に成功しました！");
+    }
+</script>
+
 </html>
