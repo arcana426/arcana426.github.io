@@ -3,27 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>reCAPTCHA Integration</title>
-    <!-- reCAPTCHA v2 スクリプト -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <title>reCAPTCHA</title>
     <style>
-        #action-button {
-            margin-top: 20px;
-        }
         /* バッジが表示されるか確認するためのスタイル */
         .grecaptcha-badge {
             visibility: visible !important;
             opacity: 1 !important;
         }
     </style>
-    <script>
-        function onSubmit(token) {
-            // ボタンの有効化などの処理を行います
-            document.getElementById("action-button").disabled = false;
-            // バッジが表示されるか確認
-            console.log("reCAPTCHA検証に成功しました！");
-        }
-    </script>
 </head>
 <body>
     <h1>reCAPTCHA Example</h1>
@@ -33,6 +21,15 @@
     <div class="g-recaptcha" data-sitekey="6Lc9Du8pAAAAANVSAKtU-CZyoUbRxfGH-_bb8vKR" data-callback="onSubmit" data-badge="bottomright"></div>
     
     <!-- アクションボタン -->
-    <button id="action-button" onclick="alert('reCAPTCHA検証に成功しました！');" disabled>続ける</button>
+    <button class="button is-link" id="action-button" onclick="alert('reCAPTCHA検証に成功しました！<br>あなたは人間です。');" disabled>続ける</button>
 </body>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <script>
+        function onSubmit(token) {
+            // ボタンの有効化などの処理を行います
+            document.getElementById("action-button").disabled = false;
+            // バッジが表示されるか確認
+            console.log("reCAPTCHA検証に成功しました！");
+        }
+    </script>
 </html>
