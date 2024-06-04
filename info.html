@@ -4,15 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>reCAPTCHA Integration</title>
+    <!-- reCAPTCHA v2 スクリプト -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
         #action-button {
             margin-top: 20px;
         }
+        /* バッジが表示されるか確認するためのスタイル */
         .grecaptcha-badge {
-    visibility: visible !important;
-    opacity: 1 !important;
-}
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
     </style>
+    <script>
+        function onSubmit(token) {
+            // ボタンの有効化などの処理を行います
+            document.getElementById("action-button").disabled = false;
+            // バッジが表示されるか確認
+            console.log("reCAPTCHA検証に成功しました！");
+        }
+    </script>
 </head>
 <body>
     <h1>reCAPTCHA Example</h1>
@@ -24,12 +35,4 @@
     <!-- アクションボタン -->
     <button id="action-button" onclick="alert('reCAPTCHA検証に成功しました！');" disabled>続ける</button>
 </body>
-        <!-- reCAPTCHA v2 スクリプト -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script>
-        function onSubmit(token) {
-            // ボタンの有効化などの処理を行います
-            document.getElementById("action-button").disabled = false;
-        }
-    </script>
 </html>
