@@ -20,10 +20,14 @@
         <div class="container">
             <h1 class="title">reCAPTCHA デモページ</h1>
             <div class="box">
-                <div class="g-recaptcha" data-sitekey="6LfEzPApAAAAAD3L0-J-8C67MGTgi4TsqUF_wJpS"
-                    data-callback="onSubmit"></div>
-                <button class="button is-link" id="action-button" onclick="alert('reCAPTCHA検証に成功しました!<br>あなたは人間です。');"
-                    disabled>続ける</button>
+                <div class="container">
+                    <div class="g-recaptcha" data-sitekey="6LfEzPApAAAAAD3L0-J-8C67MGTgi4TsqUF_wJpS"
+                        data-callback="onSubmit"></div>
+                </div>
+                <div class="container">
+                    <button class="button is-link" id="action-button"
+                        onclick="alert('reCAPTCHA検証に成功しました!<br>あなたは人間です。');" disabled>続ける</button>
+                </div>
             </div>
         </div>
     </section>
