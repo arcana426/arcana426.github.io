@@ -34,11 +34,13 @@
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="https://www.google.com/recaptcha/api.js?render=6LebyfApAAAAAOLwgEg2OrBa1rqo8bsacmRSNHMq"></script>
 <script>
-    window.addEventListener('load', function () {
-        grecaptcha.ready(function () {
-            grecaptcha.execute();
+window.addEventListener('load', function () {
+    grecaptcha.ready(function () {
+        grecaptcha.execute('6LebyfApAAAAAOLwgEg2OrBa1rqo8bsacmRSNHMq', {action: 'homepage'}).then(function(token) {
+            onSubmit(token);
         });
     });
+});
     function onSubmit(token) {
         // ボタンの有効化などの処理を行います
         document.getElementById("action-button").disabled = false;
