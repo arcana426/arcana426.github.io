@@ -34,17 +34,17 @@
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="https://www.google.com/recaptcha/api.js?render=6LebyfApAAAAAOLwgEg2OrBa1rqo8bsacmRSNHMq"></script>
 <script>
-window.addEventListener('load', function () {
-    grecaptcha.ready(function () {
-        grecaptcha.execute('6LebyfApAAAAAOLwgEg2OrBa1rqo8bsacmRSNHMq', {action: 'homepage'}).then(function(token) {
-            onSubmit(token);
+   window.addEventListener('load', function () {
+        grecaptcha.ready(function () {
+            grecaptcha.execute();
         });
     });
-});
-function onSubmit(token) {
-    document.getElementById("action-button").disabled = false;
-    console.log("reCAPTCHA検証に成功しました!");
-}
+    function onSubmit(token) {
+        // ボタンの有効化などの処理を行います
+        document.getElementById("action-button").disabled = false;
+        // バッジが表示されるか確認
+        console.log("reCAPTCHA検証に成功しました!");
+    }
 </script>
 
 </html>
