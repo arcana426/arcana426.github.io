@@ -41,12 +41,10 @@ window.addEventListener('load', function () {
         });
     });
 });
-    function onSubmit(token) {
-        // ボタンの有効化などの処理を行います
-        document.getElementById("action-button").disabled = false;
-        // バッジが表示されるか確認
-        console.log("reCAPTCHA検証に成功しました!");
-    }
+function onSubmit(token) {
+    document.getElementById("action-button").disabled = false;
+    console.log("reCAPTCHA検証に成功しました!");
+}
 </script>
 
 </html>
