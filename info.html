@@ -1,38 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Language Loading</title>
-    <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
-</head>
-<body>
-    <div class="container">
-        <p class="has-text-white is-size-3">Loading...</p>
-        <div class="loading-bar">
-            <div class="progress"></div>
-        </div>
-        <img src="./img/loading.gif" alt="Loading">
-    </div>
-</body>
-        <script>
-        window.onload = function() {
-            // Get the browser's language setting
-            var userLang = navigator.language || navigator.userLanguage;
+    <title>reCAPTURE</title>
+    <style>
+        /* バッジが表示されるか確認するためのスタイル */
+        .grecaptcha-badge {
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
 
-            // Wait for 3 seconds before redirecting
-            setTimeout(function() {
-                // Determine the redirect destination based on language
-                if (userLang.startsWith('ja')) {
-                    // Redirect to jp.html for Japanese
-                    window.location.href = './ja-jp/index.html';
-                } else {
-                    // Redirect to us.html for other languages
-                    window.location.href = './en-us/index.html';
-                }
-            }, 3000); // 3000 milliseconds (3 seconds)
-        };
-    </script>
-    <script src="https://www.google.com/recaptcha/api.js?render=6LebyfApAAAAAOLwgEg2OrBa1rqo8bsacmRSNHMq"></script>
+        /* フェードイン・フェードアウトのスタイル */
+        .fade-out {
+            animation: fadeOut 0.5s forwards;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s forwards;
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        #new-content {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="section" id="original-content">
+        <div class="container">
+            <h1 class="title">reCAPTCHA Demo Page</h1>
+            <div class="notification">
+                <div class="box">
+                    <div class="g-recaptcha" data-sitekey="6LfEzPApAAAAAD3L0-J-8C67MGTgi4TsqUF_wJpS" data-callback="onSubmit">
+                    </div><br>
+                    <button class="button is-link" id="action-button" onclick="moveToNewContent();" disabled>move on</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="new-content">
+        <div class="container">
+            <h1 class="title">New Page Content</h1>
+            <div class="notification">
+                <div class="box">
+                    <p>Welcome to the new page!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LebyfApAAAAAOLwgEg2OrBa1rqo8bsacmRSNHMq"></script>
+<script>
+    window.addEventListener('load', function () {
+        grecaptcha.ready(function () {
+            grecaptcha.execute();
+        });
+    });
+
+    function onSubmit(token) {
+        // ボタンの有効化などの処理を行います
+        document.getElementById("action-button").disabled = false;
+        // バッジが表示されるか確認
+        console.log("reCAPTCHA検証に成功しました!");
+    }
+
+    function moveToNewContent() {
+        const originalContent = document.getElementById('original-content');
+        const newContent = document.getElementById('new-content');
+
+        // オリジナルコンテンツをフェードアウト
+        originalContent.classList.add('fade-out');
+
+        // フェードアウトが完了したら新しいコンテンツをフェードイン
+        originalContent.addEventListener('animationend', function () {
+            originalContent.style.display = 'none';
+            newContent.style.display = 'block';
+            newContent.classList.add('fade-in');
+        });
+    }
+</script>
+
 </html>
