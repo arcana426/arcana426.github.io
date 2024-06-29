@@ -62,10 +62,12 @@
 
     <html id="new-content">
         <div class="container">
-            <h1 class="title">New Page Content</h1>
+            <h1 class="title">Verification successful</h1>
             <div class="notification">
                 <div class="box">
                     <p>Welcome to the new page!</p>
+                    <button class="button is-link" id="action-button"
+                    disabled>move on</button>
                 </div>
             </div>
         </div>
@@ -102,6 +104,13 @@
             newContent.classList.add('fade-in');
         });
     }
+            window.onload = function() {
+            var button = document.getElementById('action-button');
+            button.addEventListener('click', function() {
+                alert('ボタンがクリックされました！');
+                // 他のJavaScriptの処理をここに追加
+            });
+        }
 </script>
 
 </html>
