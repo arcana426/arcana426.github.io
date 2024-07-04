@@ -40,7 +40,7 @@
             }
         }
 
-        #new-content {
+        #new-content, #newer-content {
             display: none;
         }
     </style>
@@ -63,7 +63,7 @@
 
     <section id="new-content" class="section">
         <div class="container">
-        <p class="is-size-4">検証に成功！</p>
+            <p class="is-size-4">検証に成功！</p>
             <h1 class="title">Verification successful!</h1>
             <div class="notification">
                 <div class="box content">
@@ -71,18 +71,32 @@
                     <h2>Welcome to the new page!</h2>
                     <p class="is-size4">次のページへ行きましょう</p>
                     <h2>Next Pege!</h2>
-                    <button class="button is-link" id="action-button">move on</button>
+                    <button class="button is-link" id="move-on-button" onclick="moveToNewerContent();">move on</button>
                 </div>
             </div>
         </div>
     </section>
+
+    <section id="newer-content" class="section">
+        <div class="container">
+            <p class="is-size-4">最終段階へようこそ！</p>
+            <h1 class="title">Welcome to the final stage!</h1>
+            <div class="notification">
+                <div class="box content">
+                    <p class="is-size-4">ここが最終ページです！</p>
+                    <h2>This is the final page!</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="footer has-background-light">
-  <div class="content has-text-centered">
-    <p>&copy; 2024 Arcana426. All Rights Reserved.</p>
-    <p>Unauthorized duplication or distribution is prohibited. For more information, please visit our <a href="terms-of-service.html">Terms of Service</a> and <a href="privacy-policy.html">Privacy Policy</a>.</p>
-    <p>Contact us: <a href="mailto:arcana426@onlyapp.net">arcana426@onlyapp.net</a></p>
-  </div>
-</footer>
+        <div class="content has-text-centered">
+            <p>&copy; 2024 Arcana426. All Rights Reserved.</p>
+            <p>Unauthorized duplication or distribution is prohibited. For more information, please visit our <a href="terms-of-service.html">Terms of Service</a> and <a href="privacy-policy.html">Privacy Policy</a>.</p>
+            <p>Contact us: <a href="mailto:arcana426@onlyapp.net">arcana426@onlyapp.net</a></p>
+        </div>
+    </footer>
 
 </body>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -95,9 +109,7 @@
     });
 
     function onSubmit(token) {
-        // ボタンの有効化などの処理を行います
         document.getElementById("action-button").disabled = false;
-        // バッジが表示されるか確認
         console.log("reCAPTCHA検証に成功しました!");
     }
 
@@ -105,17 +117,27 @@
         const originalContent = document.getElementById('original-content');
         const newContent = document.getElementById('new-content');
 
-        // オリジナルコンテンツをフェードアウト
         originalContent.classList.add('fade-out');
 
-        // フェードアウトが完了したら新しいコンテンツをフェードイン
         originalContent.addEventListener('animationend', function () {
             originalContent.style.display = 'none';
             newContent.style.display = 'block';
             newContent.classList.add('fade-in');
-        });
+        }, { once: true });
     }
 
+    function moveToNewerContent() {
+        const newContent = document.getElementById('new-content');
+        const newerContent = document.getElementById('newer-content');
+
+        newContent.classList.add('fade-out');
+
+        newContent.addEventListener('animationend', function () {
+            newContent.style.display = 'none';
+            newerContent.style.display = 'block';
+            newerContent.classList.add('fade-in');
+        }, { once: true });
+    }
 </script>
 
 </html>
