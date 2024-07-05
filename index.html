@@ -40,6 +40,7 @@
             }
         }
 
+        /* 初期状態で非表示にするスタイル */
         #new-content, #newer-content {
             display: none;
         }
@@ -53,8 +54,7 @@
             <h1 class="title">Execute reCAPTCHA and proceed to the next page.</h1>
             <div class="notification">
                 <div class="box">
-                    <div class="g-recaptcha" data-sitekey="6LfEzPApAAAAAD3L0-J-8C67MGTgi4TsqUF_wJpS" data-callback="onSubmit">
-                    </div><br>
+                    <div class="g-recaptcha" data-sitekey="6LfEzPApAAAAAD3L0-J-8C67MGTgi4TsqUF_wJpS" data-callback="onSubmit"></div><br>
                     <button class="button is-link" id="action-button" onclick="moveToNewContent();" disabled>move on</button>
                 </div>
             </div>
@@ -98,39 +98,39 @@
         </div>
     </footer>
 
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("action-button").disabled = false;
+            console.log("reCAPTCHA検証に成功しました!");
+        }
+
+        function moveToNewContent() {
+            const originalContent = document.getElementById('original-content');
+            const newContent = document.getElementById('new-content');
+
+            originalContent.classList.add('fade-out');
+
+            originalContent.addEventListener('animationend', function () {
+                originalContent.style.display = 'none';
+                newContent.style.display = 'block';
+                newContent.classList.add('fade-in');
+            }, { once: true });
+        }
+
+        function moveToNewerContent() {
+            const newContent = document.getElementById('new-content');
+            const newerContent = document.getElementById('newer-content');
+
+            newContent.classList.add('fade-out');
+
+            newContent.addEventListener('animationend', function () {
+                newContent.style.display = 'none';
+                newerContent.style.display = 'block';
+                newerContent.classList.add('fade-in');
+            }, { once: true });
+        }
+    </script>
 </body>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<script>
-    function onSubmit(token) {
-        document.getElementById("action-button").disabled = false;
-        console.log("reCAPTCHA検証に成功しました!");
-    }
-
-    function moveToNewContent() {
-        const originalContent = document.getElementById('original-content');
-        const newContent = document.getElementById('new-content');
-
-        originalContent.classList.add('fade-out');
-
-        originalContent.addEventListener('animationend', function () {
-            originalContent.style.display = 'none';
-            newContent.style.display = 'block';
-            newContent.classList.add('fade-in');
-        }, { once: true });
-    }
-
-    function moveToNewerContent() {
-        const newContent = document.getElementById('new-content');
-        const newerContent = document.getElementById('newer-content');
-
-        newContent.classList.add('fade-out');
-
-        newContent.addEventListener('animationend', function () {
-            newContent.style.display = 'none';
-            newerContent.style.display = 'block';
-            newerContent.classList.add('fade-in');
-        }, { once: true });
-    }
-</script>
 
 </html>
