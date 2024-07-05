@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
-    <title>AI pege</title>
+    <title>AI page</title>
     <style>
         /* バッジが表示されるか確認するためのスタイル */
         .grecaptcha-badge {
@@ -67,7 +67,9 @@
             <h1 class="title">Verification successful!</h1>
             <div class="notification">
                 <div class="box content">
+                    <p class="is-size-4">新しいページへようこそ！</p>
                     <h2>Welcome to the new page!</h2>
+                    <p class="is-size4">次のページへ行きましょう</p>
                     <h2>Next Page!</h2>
                     <button class="button is-link" id="move-on-button" onclick="moveToNewerContent();">move on</button>
                 </div>
@@ -98,14 +100,7 @@
 
 </body>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<script src="https://www.google.com/recaptcha/api.js?render=6LebyfApAAAAAOLwgEg2OrBa1rqo8bsacmRSNHMq"></script>
 <script>
-    window.addEventListener('load', function () {
-        grecaptcha.ready(function () {
-            grecaptcha.execute();
-        });
-    });
-
     function onSubmit(token) {
         document.getElementById("action-button").disabled = false;
         console.log("reCAPTCHA検証に成功しました!");
