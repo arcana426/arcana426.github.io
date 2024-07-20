@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html dir="ltr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,13 +36,14 @@
         base-uri 'self';
         form-action 'self';
     ">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="img/ai.jpg" type="image/x-icon">
     <title>Protected AI</title>
-    <style>
+    <style nonce="12345">
         /* バッジが表示されるか確認するためのスタイル */
         .grecaptcha-badge {
             visibility: visible !important;
@@ -158,11 +162,9 @@
             <p>Contact us: <a href="mailto:arcana426@onlyapp.net">arcana426@onlyapp.net</a></p>
         </div>
     </footer>
-    </script>
-</body>
+    
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script src="https://www.google.com/recaptcha/api.js?render=6LebyfApAAAAAOLwgEg2OrBa1rqo8bsacmRSNHMq"></script>
-    <script>
+    <script nonce="12345">
         function onSubmit(token) {
             document.getElementById("action-button").disabled = false;
             console.log("reCAPTCHA検証に成功しました!");
@@ -194,7 +196,7 @@
             }, { once: true });
         }
         
-                document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() {
             var now = new Date();
             var oneDayLater = new Date(now.getTime() + 24 * 60 * 60 * 1000);
             var expiresMetaTag = document.createElement('meta');
@@ -210,4 +212,5 @@
         });
     </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2HVBZMGKSE"></script>
+</body>
 </html>
