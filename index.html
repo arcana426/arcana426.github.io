@@ -26,7 +26,7 @@
     <meta name="google-site-verification" content="fCNFCCF-f-tB4VuystrTjbrS0-RLO0koUZFy6algI8M" />
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self'; 
-        script-src 'self' https://cdn.jsdelivr.net https://www.google.com https://www.gstatic.com https://www.googletagmanager.com https://fonts.googleapis.com https://fonts.gstatic.com 'nonce-12345';
+        script-src 'self' https://cdn.jsdelivr.net https://www.google.com https://www.gstatic.com https://www.googletagmanager.com https://fonts.googleapis.com https://fonts.gstatic.com;
         style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://bulma.io;
         img-src 'self' data: https://arcana426.github.io https://www.google.com https://www.gstatic.com;
         font-src 'self' https://fonts.gstatic.com;
@@ -36,23 +36,18 @@
         base-uri 'self';
         form-action 'self';
     ">
-    <!-- Permissions-Policyヘッダーを削除 -->
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="img/ai.jpg" type="image/x-icon">
     <title>Protected AI</title>
-    <style nonce="12345">
-        /* バッジが表示されるか確認するためのスタイル */
+    <style>
         .grecaptcha-badge {
             visibility: visible !important;
             opacity: 1 !important;
         }
 
-        /* フェードイン・フェードアウトのスタイル */
         .fade-out {
             animation: fadeOut 0.5s forwards;
         }
@@ -107,7 +102,6 @@
             }
         }
 
-        /* 初期状態で非表示にするスタイル */
         #new-content, #newer-content {
             display: none;
         }
@@ -166,7 +160,7 @@
     </footer>
     
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script nonce="12345">
+    <script>
         function onSubmit(token) {
             document.getElementById("action-button").disabled = false;
             console.log("reCAPTCHA検証に成功しました!");
