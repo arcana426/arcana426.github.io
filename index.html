@@ -36,6 +36,8 @@
         base-uri 'self';
         form-action 'self';
     ">
+    <!-- Permissions-Policyヘッダーを削除 -->
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -195,22 +197,7 @@
                 newerContent.classList.add('zoom-in');
             }, { once: true });
         }
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            var now = new Date();
-            var oneDayLater = new Date(now.getTime() + 24 * 60 * 60 * 1000);
-            var expiresMetaTag = document.createElement('meta');
-            expiresMetaTag.httpEquiv = "expires";
-            expiresMetaTag.content = oneDayLater.toUTCString();
-            document.head.appendChild(expiresMetaTag);
-
-            // Check if the page has expired
-            var expiryDate = new Date(expiresMetaTag.content);
-            if (now >= expiryDate) {
-                alert("This page has expired!");
-            }
-        });
     </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2HVBZMGKSE"></script>
 </body>
+
 </html>
