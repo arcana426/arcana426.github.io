@@ -50,11 +50,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const nonce = generateNonce(16);
 
-    if (!nonce) {
-        console.error("Nonceの生成に失敗しました。");
-        return;
-    }
-
     // 外部スクリプトタグにnonceを追加
     const scripts = document.querySelectorAll('script[src]');
     scripts.forEach(script => {
@@ -64,16 +59,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // CSPメタタグを更新
     const cspMetaTag = document.querySelector('meta[http-equiv="Content-Security-Policy"]');
     if (cspMetaTag) {
-        const currentContent = cspMetaTag.getAttribute('content');
-        if (currentContent.includes("'nonce-...'")) {
-            cspMetaTag.setAttribute('content', currentContent.replace("'nonce-...'", `'nonce-${nonce}'`));
-        } else {
-            console.error("CSPメタタグに'nonce-...'が見つかりませんでした。");
-        }
-    } else {
-        console.error("CSPメタタグが見つかりませんでした。");
+        cspMetaTag.setAttribute('content', cspMetaTag.getAttribute('content').replace("'nonce-12345'", `'nonce-${nonce}'`));
     }
 
+    // nonceが設定されているか確認
+    if (!nonce) {
+        console.error("Nonceの生成に失敗しました。");
+    }
+});
     var now = new Date();
     var oneDayLater = new Date(now.getTime() + 24 * 60 * 60 * 1000);
     
