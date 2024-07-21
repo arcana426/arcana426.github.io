@@ -25,90 +25,100 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <meta name="google-site-verification" content="fCNFCCF-f-tB4VuystrTjbrS0-RLO0koUZFy6algI8M" />
     <!-- CSP ヘッダー -->
-    <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self';
-        script-src 'self' https://cdn.jsdelivr.net https://www.google.com https://www.gstatic.com https://www.googletagmanager.com https://fonts.googleapis.com https://fonts.gstatic.com;
-        style-src 'self' https://fonts.googleapis.com https://cdn.jsdelivr.net https://bulma.io 'unsafe-inline';
-        img-src 'self' data: https://arcana426.github.io https://www.google.com https://www.gstatic.com;
-        font-src 'self' https://fonts.gstatic.com;
-        frame-src https://www.google.com/recaptcha/;
-        connect-src 'self' https://www.google-analytics.com;
-        object-src 'none';
-        base-uri 'self';
-        form-action 'self';
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; 
+    script-src 'self' https://cdn.jsdelivr.net https://www.google.com https://www.gstatic.com https://www.googletagmanager.com https://fonts.googleapis.com https://fonts.gstatic.com; 
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://bulma.io; 
+    img-src 'self' data: https://arcana426.github.io https://www.google.com https://www.gstatic.com;
+    font-src 'self' https://fonts.gstatic.com; 
+    frame-src https://www.google.com/recaptcha/; connect-src 'self' https://www.google-analytics.com; 
+    object-src 'none';
+    base-uri 'self'; 
+    form-action 'self';
     ">
+</head>
+
+<body>
     <!-- Permissions-Policy ヘッダー -->
     <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
     <link href="https://arcana426.github.io/css/style.css">
     <link rel="shortcut icon" href="img/ai.jpg" type="image/x-icon">
     <title>Protected AI</title>
-</head>
-<body>
-    <section class="section" id="original-content">
-        <div class="container">
-            <p class="is-size-4">reCAPTCHAを実施して次のページへ</p>
-            <h1 class="title">Execute reCAPTCHA and proceed to the next page.</h1>
-            <div class="notification">
-                <div class="box">
-                    <div class="g-recaptcha" data-sitekey="6LfEzPApAAAAAD3L0-J-8C67MGTgi4TsqUF_wJpS" data-callback="onSubmit"></div><br>
-                    <button class="button is-link" id="action-button" onclick="moveToNewContent();" disabled>move on</button>
+    </head>
+
+    <body>
+        <section class="section" id="original-content">
+            <div class="container">
+                <p class="is-size-4">reCAPTCHAを実施して次のページへ</p>
+                <h1 class="title">Execute reCAPTCHA and proceed to the next page.</h1>
+                <div class="notification">
+                    <div class="box">
+                        <div class="g-recaptcha" data-sitekey="6LfEzPApAAAAAD3L0-J-8C67MGTgi4TsqUF_wJpS"
+                            data-callback="onSubmit"></div><br>
+                        <button class="button is-link" id="action-button" onclick="moveToNewContent();" disabled>move
+                            on</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="new-content" class="section">
-        <div class="container">
-            <p class="is-size-4">検証に成功！</p>
-            <h1 class="title">Verification successful!</h1>
-            <div class="notification">
-                <div class="box content">
-                    <p class="is-size-4">新しいページへようこそ！</p>
-                    <h2>Welcome to the new page!</h2>
-                    <p class="is-size4">次のページへ行きましょう</p>
-                    <h2>Next Page!</h2>
-                    <button class="button is-link" id="move-on-button" onclick="moveToNewerContent();">move on</button>
+        <section id="new-content" class="section">
+            <div class="container">
+                <p class="is-size-4">検証に成功！</p>
+                <h1 class="title">Verification successful!</h1>
+                <div class="notification">
+                    <div class="box content">
+                        <p class="is-size-4">新しいページへようこそ！</p>
+                        <h2>Welcome to the new page!</h2>
+                        <p class="is-size4">次のページへ行きましょう</p>
+                        <h2>Next Page!</h2>
+                        <button class="button is-link" id="move-on-button" onclick="moveToNewerContent();">move
+                            on</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="newer-content" class="section">
-        <div class="container">
-            <p class="is-size-4">最終段階へようこそ！</p>
-            <h1 class="title">Welcome to the final stage!</h1>
-            <div class="notification">
-                <div class="box content">
-                    <p class="is-size-4">ここが最終ページです！</p>
-                    <h2>This is the final page!</h2>
+        <section id="newer-content" class="section">
+            <div class="container">
+                <p class="is-size-4">最終段階へようこそ！</p>
+                <h1 class="title">Welcome to the final stage!</h1>
+                <div class="notification">
+                    <div class="box content">
+                        <p class="is-size-4">ここが最終ページです！</p>
+                        <h2>This is the final page!</h2>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer class="footer has-background-light">
-        <div class="content has-text-centered">
-            <p>&copy; 2024 Arcana426. All Rights Reserved.</p>
-            <p>Unauthorized duplication or distribution is prohibited. For more information, please visit our <a href="terms-of-service.html">Terms of Service</a> and <a href="privacy-policy.html">Privacy Policy</a>.</p>
-            <p>Contact us: <a href="mailto:arcana426@onlyapp.net">arcana426@onlyapp.net</a></p>
-        </div>
-    </footer>
-</body>
-<script>
-    // 3秒以内にscript.jsが読み込まれていない場合にエラーメッセージを表示
-    window.addEventListener('load', function() {
-        setTimeout(function() {
-            if (typeof window.scriptLoaded === 'undefined') {
-                console.error("script.jsの読み込みに失敗しました。");
-            }
-        }, 3000);
-    });
-</script>
-<script src="./js/en-us/script.js"></script>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2HVBZMGKSE"></script>
+        <footer class="footer has-background-light">
+            <div class="content has-text-centered">
+                <p>&copy; 2024 Arcana426. All Rights Reserved.</p>
+                <p>Unauthorized duplication or distribution is prohibited. For more information, please visit our <a
+                        href="terms-of-service.html">Terms of Service</a> and <a href="privacy-policy.html">Privacy
+                        Policy</a>.</p>
+                <p>Contact us: <a href="mailto:arcana426@onlyapp.net">arcana426@onlyapp.net</a></p>
+            </div>
+        </footer>
+    </body>
+    <script>
+        // 3秒以内にscript.jsが読み込まれていない場合にエラーメッセージを表示
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                if (typeof window.scriptLoaded === 'undefined') {
+                    console.error("script.jsの読み込みに失敗しました。");
+                }
+            }, 3000);
+        });
+    </script>
+    <script src="./js/en-us/script.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2HVBZMGKSE"></script>
+
 </html>
