@@ -86,4 +86,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (now >= expiryDate) {
         alert("This page has expired!");
     }
+
+    // コンソールにエラーメッセージがあるか確認して表示
+    const consoleErrors = window.console.error;
+    if (consoleErrors.length > 0) {
+        consoleErrors.forEach(error => {
+            console.error(error);
+        });
+    }
 });
