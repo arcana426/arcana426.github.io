@@ -1,43 +1,71 @@
+function onSubmit(token) {
+    document.getElementById('action-button').disabled = false;
+    console.log("reCAPTCHA検証に成功しました!");
+}
+
+function moveToNewContent() {
+    const originalContent = document.getElementById('original-content');
+    const newContent = document.getElementById('new-content');
+
+    originalContent.classList.add('fade-out');
+
+    originalContent.addEventListener('animationend', function () {
+        originalContent.style.display = 'none';
+        newContent.style.display = 'block';
+        newContent.classList.add('fade-in');
+    }, { once: true });
+}
+
+function moveToNewerContent() {
+    const newContent = document.getElementById('new-content');
+    const newerContent = document.getElementById('newer-content');
+
+    newContent.classList.add('slide-out');
+
+    newContent.addEventListener('animationend', function () {
+        newContent.style.display = 'none';
+        newerContent.style.display = 'block';
+        newerContent.classList.add('zoom-in');
+    }, { once: true });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-    // reCAPTCHAのコールバック関数
-    window.onSubmit = function(token) {
-        document.getElementById("action-button").disabled = false;
-        console.log("reCAPTCHA検証に成功しました!");
-    };
-
-    // move on ボタンのイベントリスナー
-    document.getElementById("action-button").addEventListener("click", moveToNewContent);
-
-    // 次のページへ移動する関数
-    function moveToNewContent() {
-        const originalContent = document.getElementById('original-content');
-        const newContent = document.getElementById('new-content');
-
-        originalContent.classList.add('fade-out');
-
-        originalContent.addEventListener('animationend', function () {
-            originalContent.style.display = 'none';
-            newContent.style.display = 'block';
-            newContent.classList.add('fade-in');
-        }, { once: true });
+    // nonceを生成
+    function generateNonce(length) {
+        const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let nonce = '';
+        for (let i = 0; i < length; i++) {
+            nonce += charset.charAt(Math.floor(Math.random() * charset.length));
+        }
+        return nonce;
     }
 
-    document.getElementById("move-on-button").addEventListener("click", moveToNewerContent);
+    const nonce = generateNonce(16);
 
-    function moveToNewerContent() {
-        const newContent = document.getElementById('new-content');
-        const newerContent = document.getElementById('newer-content');
-
-        newContent.classList.add('slide-out');
-
-        newContent.addEventListener('animationend', function () {
-            newContent.style.display = 'none';
-            newerContent.style.display = 'block';
-            newerContent.classList.add('zoom-in');
-        }, { once: true });
+    if (!nonce) {
+        console.error("Nonceの生成に失敗しました。");
+        return;
     }
 
-    // 有効期限を指定する関数
+    // 外部スクリプトタグにnonceを追加
+    const scripts = document.querySelectorAll('script[src]');
+    scripts.forEach(script => {
+        script.setAttribute('nonce', nonce);
+    });
+
+    // CSPメタタグを更新
+    const cspMetaTag = document.querySelector('meta[http-equiv="Content-Security-Policy"]');
+    if (cspMetaTag) {
+        const currentContent = cspMetaTag.getAttribute('content');
+        if (currentContent.includes("'nonce-...'")) {
+            cspMetaTag.setAttribute('content', currentContent.replace("'nonce-...'", `'nonce-${nonce}'`));
+        } else {
+            console.error("CSPメタタグに'nonce-...'が見つかりませんでした。");
+        }
+    } else {
+        console.error("CSPメタタグが見つかりませんでした。");
+    }
+
     var now = new Date();
     var oneDayLater = new Date(now.getTime() + 24 * 60 * 60 * 1000);
     
