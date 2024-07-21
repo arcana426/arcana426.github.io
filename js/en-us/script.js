@@ -91,3 +91,41 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error(error);
         });
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const cookieBanner = document.getElementById('cookie-banner');
+        const userConsent = localStorage.getItem('userConsent');
+
+        if (!userConsent) {
+            cookieBanner.style.display = 'block';
+        }
+
+        window.acceptCookies = function() {
+            localStorage.setItem('userConsent', 'accepted');
+            cookieBanner.style.display = 'none';
+            enableThirdPartyCookies();
+        };
+
+        window.declineCookies = function() {
+            localStorage.setItem('userConsent', 'declined');
+            cookieBanner.style.display = 'none';
+            disableThirdPartyCookies();
+        };
+
+        function enableThirdPartyCookies() {
+            // サードパーティクッキーを有効にする処理をここに追加
+            console.log("サードパーティクッキーが有効になりました。");
+        }
+
+        function disableThirdPartyCookies() {
+            // サードパーティクッキーを無効にする処理をここに追加
+            console.log("サードパーティクッキーが無効になりました。");
+        }
+
+        // ページ読み込み時にユーザーの選択に基づいてサードパーティクッキーの使用を制御
+        if (userConsent === 'accepted') {
+            enableThirdPartyCookies();
+        } else if (userConsent === 'declined') {
+            disableThirdPartyCookies();
+        }
+    });
