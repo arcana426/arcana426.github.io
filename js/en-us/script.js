@@ -1,3 +1,11 @@
+// フラグを置いてindex.htmlで確認する
+//　trueなら正しく読み込まれて、コンソールに「script.js has been successfully loaded.」と表記される。
+//  undefinedなら読み込まれていない。
+window.scriptLoaded = true;
+
+console.log("script.js has been successfully loaded.");
+
+
 function onSubmit(token) {
     document.getElementById('action-button').disabled = false;
     console.log("reCAPTCHA検証に成功しました!");
