@@ -98,6 +98,16 @@
         </div>
     </footer>
 </body>
+<script>
+    // 3秒以内にscript.jsが読み込まれていない場合にエラーメッセージを表示
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            if (typeof window.scriptLoaded === 'undefined') {
+                console.error("script.jsの読み込みに失敗しました。");
+            }
+        }, 3000);
+    });
+</script>
 <script src="./js/en-us/script.js"></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2HVBZMGKSE"></script>
