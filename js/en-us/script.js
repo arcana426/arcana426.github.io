@@ -38,7 +38,7 @@ function moveToNewerContent() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    // nonceを生成
+    // nonceを生成する関数
     function generateNonce(length) {
         const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let nonce = '';
@@ -50,23 +50,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const nonce = generateNonce(16);
 
-    // 外部スクリプトタグにnonceを追加
+    // nonceをHTMLに挿入する
+    const cspMetaTag = document.querySelector('meta[http-equiv="Content-Security-Policy"]');
+    if (cspMetaTag) {
+        cspMetaTag.setAttribute('content', cspMetaTag.getAttribute('content').replace(/'nonce-12345'/, `'nonce-${nonce}'`));
+    }
+
+    // nonceをスクリプトタグに追加
     const scripts = document.querySelectorAll('script[src]');
     scripts.forEach(script => {
         script.setAttribute('nonce', nonce);
     });
-
-    // CSPメタタグを更新
-    const cspMetaTag = document.querySelector('meta[http-equiv="Content-Security-Policy"]');
-    if (cspMetaTag) {
-        cspMetaTag.setAttribute('content', cspMetaTag.getAttribute('content').replace("'nonce-12345'", `'nonce-${nonce}'`));
-    }
-
-    // nonceが設定されているか確認
-    if (!nonce) {
-        console.error("Nonceの生成に失敗しました。");
-    }
 });
+
     var now = new Date();
     var oneDayLater = new Date(now.getTime() + 24 * 60 * 60 * 1000);
     
