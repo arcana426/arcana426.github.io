@@ -44,9 +44,15 @@
     <link href="./css/style.css">
     <link rel="shortcut icon" href="img/ai.jpg" type="image/x-icon">
     <title>Protected AI</title>
+    <script src="./js/en-us/script.js"></script>
     </head>
 
     <body>
+        <div id="cookie-banner" style="display:none;">
+            <button onclick="acceptCookies()">Accept Cookies</button>
+            <button onclick="declineCookies()">Decline Cookies</button>
+        </div>
+
         <section class="section" id="original-content">
             <div class="container">
                 <p class="is-size-4">reCAPTCHAを実施して次のページへ</p>
@@ -61,13 +67,6 @@
                 </div>
             </div>
         </section>
-        <div id="cookie-banner" style="display: none; position: fixed; bottom: 0; width: 100%; background: #fff; border-top: 1px solid #ccc; padding: 10px; text-align: center;">
-            <p>
-                当サイトでは、サービス向上のためにサードパーティクッキーを使用しています。詳細については、<a href="/privacy-policy">プライバシーポリシー</a>をご覧ください。
-            </p>
-            <button onclick="acceptCookies()">同意する</button>
-            <button onclick="declineCookies()">同意しない</button>
-        </div>
         <section id="new-content" class="section">
             <div class="container">
                 <p class="is-size-4">検証に成功！</p>
@@ -119,7 +118,6 @@
                 }
             }, 3000);
     </script>
-    <script src="./js/en-us/script.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2HVBZMGKSE"></script>
 
