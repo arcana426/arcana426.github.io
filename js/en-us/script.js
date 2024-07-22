@@ -5,7 +5,6 @@ window.scriptLoaded = true;
 
 console.log("script.js has been successfully loaded.");
 
-
 function onSubmit(token) {
     document.getElementById('action-button').disabled = false;
     console.log("reCAPTCHA検証に成功しました!");
@@ -61,23 +60,23 @@ document.addEventListener('DOMContentLoaded', function() {
     scripts.forEach(script => {
         script.setAttribute('nonce', nonce);
     });
-});
 
+    // ページの有効期限を設定
     var now = new Date();
     var oneDayLater = new Date(now.getTime() + 24 * 60 * 60 * 1000);
-    
+
     // 既存のメタタグを削除（必要に応じて）
     var existingExpiresMetaTag = document.querySelector('meta[http-equiv="expires"]');
     if (existingExpiresMetaTag) {
         existingExpiresMetaTag.remove();
     }
-    
+
     // 新しいメタタグを追加
     var expiresMetaTag = document.createElement('meta');
     expiresMetaTag.httpEquiv = "expires";
     expiresMetaTag.content = oneDayLater.toUTCString();
     document.head.appendChild(expiresMetaTag);
-    
+
     // ページの有効期限をチェック
     var expiryDate = new Date(expiresMetaTag.content);
     if (now >= expiryDate) {
@@ -86,46 +85,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // コンソールにエラーメッセージがあるか確認して表示
     const consoleErrors = window.console.error;
-    if (consoleErrors.length > 0) {
+    if (consoleErrors && consoleErrors.length > 0) {
         consoleErrors.forEach(error => {
             console.error(error);
         });
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const cookieBanner = document.getElementById('cookie-banner');
-        const userConsent = localStorage.getItem('userConsent');
+    const cookieBanner = document.getElementById('cookie-banner');
+    const userConsent = localStorage.getItem('userConsent');
 
-        if (!userConsent) {
-            cookieBanner.style.display = 'block';
-        }
+    if (!userConsent) {
+        cookieBanner.style.display = 'block';
+    }
 
-        window.acceptCookies = function() {
-            localStorage.setItem('userConsent', 'accepted');
-            cookieBanner.style.display = 'none';
-            enableThirdPartyCookies();
-        };
+    window.acceptCookies = function() {
+        localStorage.setItem('userConsent', 'accepted');
+        cookieBanner.style.display = 'none';
+        enableThirdPartyCookies();
+    };
 
-        window.declineCookies = function() {
-            localStorage.setItem('userConsent', 'declined');
-            cookieBanner.style.display = 'none';
-            disableThirdPartyCookies();
-        };
+    window.declineCookies = function() {
+        localStorage.setItem('userConsent', 'declined');
+        cookieBanner.style.display = 'none';
+        disableThirdPartyCookies();
+    };
 
-        function enableThirdPartyCookies() {
-            // サードパーティクッキーを有効にする処理をここに追加
-            console.log("サードパーティクッキーが有効になりました。");
-        }
+    function enableThirdPartyCookies() {
+        // サードパーティクッキーを有効にする処理をここに追加
+        console.log("サードパーティクッキーが有効になりました。");
+    }
 
-        function disableThirdPartyCookies() {
-            // サードパーティクッキーを無効にする処理をここに追加
-            console.log("サードパーティクッキーが無効になりました。");
-        }
+    function disableThirdPartyCookies() {
+        // サードパーティクッキーを無効にする処理をここに追加
+        console.log("サードパーティクッキーが無効になりました。");
+    }
 
-        // ページ読み込み時にユーザーの選択に基づいてサードパーティクッキーの使用を制御
-        if (userConsent === 'accepted') {
-            enableThirdPartyCookies();
-        } else if (userConsent === 'declined') {
-            disableThirdPartyCookies();
-        }
-    });
+    // ページ読み込み時にユーザーの選択に基づいてサードパーティクッキーの使用を制御
+    if (userConsent === 'accepted') {
+        enableThirdPartyCookies();
+    } else if (userConsent === 'declined') {
+        disableThirdPartyCookies();
+    }
+});
