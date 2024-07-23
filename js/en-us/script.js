@@ -128,7 +128,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // style.css が読み込まれているか確認
     const testElement = document.createElement('div');
-    testElement.style.display = 'none';
     testElement.classList.add('test-style');
     document.body.appendChild(testElement);
 
