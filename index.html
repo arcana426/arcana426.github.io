@@ -48,11 +48,15 @@
     </head>
 
     <body>
-        <div id="cookie-banner" style="display: none;">
-            <button id="accept-cookies">Accept Cookies</button>
-            <button id="decline-cookies">Decline Cookies</button>
-        </div>
-        
+        <notification id="cookie-notification">
+            <div class="notification-content">
+                <p>We use cookies to ensure you get the best experience on our website. 
+                    <button id="accept-cookies">Accept</button>
+                    <button id="decline-cookies">Decline</button>
+                </p>
+            </div>
+        </notification>
+
         <section class="section" id="original-content">
             <div class="container">
                 <p class="is-size-4">reCAPTCHAを実施して次のページへ</p>

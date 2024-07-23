@@ -88,24 +88,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    const cookieBanner = document.getElementById('cookie-banner');
+    const cookieNotification = document.getElementById('cookie-notification');
     const userConsent = localStorage.getItem('userConsent');
 
     if (!userConsent) {
-        cookieBanner.style.display = 'block';
+        cookieNotification.style.display = 'block';
     } else {
-        cookieBanner.style.display = 'none';
+        cookieNotification.style.display = 'none';
     }
 
     document.getElementById('accept-cookies').addEventListener('click', function() {
         localStorage.setItem('userConsent', 'accepted');
-        cookieBanner.style.display = 'none';
+        cookieNotification.style.display = 'none';
         enableThirdPartyCookies();
     });
 
     document.getElementById('decline-cookies').addEventListener('click', function() {
         localStorage.setItem('userConsent', 'declined');
-        cookieBanner.style.display = 'none';
+        cookieNotification.style.display = 'none';
         disableThirdPartyCookies();
     });
 
