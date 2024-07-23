@@ -93,6 +93,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (!userConsent) {
         cookieBanner.style.display = 'block';
+    } else {
+        cookieBanner.style.display = 'none';
     }
 
     window.acceptCookies = function() {
@@ -117,7 +119,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("サードパーティクッキーが無効になりました。");
     }
 
-
     // ページ読み込み時にユーザーの選択に基づいてサードパーティクッキーの使用を制御
     if (userConsent === 'accepted') {
         enableThirdPartyCookies();
@@ -140,10 +141,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.body.removeChild(testElement);
 });
-
-    // ページ読み込み時にユーザーの選択に基づいてサードパーティクッキーの使用を制御
-    if (userConsent === 'accepted') {
-        enableThirdPartyCookies();
-    } else if (userConsent === 'declined') {
-        disableThirdPartyCookies();
-    }
