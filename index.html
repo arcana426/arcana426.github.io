@@ -43,16 +43,16 @@
         rel="stylesheet">
     <link rel="shortcut icon" href="img/ai.jpg" type="image/x-icon">
     <title>Protected AI</title>
-    <link href="./css/style.css">
-    <script src="./js/en-us/script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="./js/en-us/script.js" nonce="12345"></script>
     </head>
 
     <body>
-        <div id="cookie-banner" style="display:none;">
-            <button onclick="acceptCookies()">Accept Cookies</button>
-            <button onclick="declineCookies()">Decline Cookies</button>
+        <div id="cookie-banner" style="display: none;">
+            <button id="accept-cookies">Accept Cookies</button>
+            <button id="decline-cookies">Decline Cookies</button>
         </div>
-
+        
         <section class="section" id="original-content">
             <div class="container">
                 <p class="is-size-4">reCAPTCHAを実施して次のページへ</p>

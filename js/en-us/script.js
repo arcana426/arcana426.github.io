@@ -97,17 +97,17 @@ document.addEventListener('DOMContentLoaded', function() {
         cookieBanner.style.display = 'none';
     }
 
-    window.acceptCookies = function() {
+    document.getElementById('accept-cookies').addEventListener('click', function() {
         localStorage.setItem('userConsent', 'accepted');
         cookieBanner.style.display = 'none';
         enableThirdPartyCookies();
-    };
+    });
 
-    window.declineCookies = function() {
+    document.getElementById('decline-cookies').addEventListener('click', function() {
         localStorage.setItem('userConsent', 'declined');
         cookieBanner.style.display = 'none';
         disableThirdPartyCookies();
-    };
+    });
 
     function enableThirdPartyCookies() {
         // サードパーティクッキーを有効にする処理をここに追加
