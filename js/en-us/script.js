@@ -1,6 +1,3 @@
-// フラグを置いてindex.htmlで確認する
-//　trueなら正しく読み込まれて、コンソールに「script.js has been successfully loaded.」と表記される。
-//  undefinedなら読み込まれていない。
 window.scriptLoaded = true;
 
 console.log("script.js has been successfully loaded.");
@@ -120,10 +117,36 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("サードパーティクッキーが無効になりました。");
     }
 
+<<<<<<< HEAD
     // ページ読み込み時にユーザーの選択に基づいてサードパーティクッキーの使用を制御
     if (userConsent === 'accepted') {
         enableThirdPartyCookies();
     } else if (userConsent === 'declined') {
         disableThirdPartyCookies();
     }
+
+    // style.css が読み込まれているか確認
+    const testElement = document.createElement('div');
+    testElement.style.display = 'none';
+    testElement.classList.add('test-style');
+    document.body.appendChild(testElement);
+
+    const styleApplied = window.getComputedStyle(testElement).getPropertyValue('display') !== 'none';
+    if (styleApplied) {
+        console.log("style.css has been successfully loaded.");
+    } else {
+        console.error("style.css failed to load.");
+    }
+
+    document.body.removeChild(testElement);
 });
+
+=======
+    // ページ読み込み時にユーザーの選択に基づいてサードパーティクッキーの使用を制御
+    if (userConsent === 'accepted') {
+        enableThirdPartyCookies();
+    } else if (userConsent === 'declined') {
+        disableThirdPartyCookies();
+    }
+
+>>>>>>> 528aebd55260917ff2218dab291f15b37ac351c3
