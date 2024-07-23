@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("サードパーティクッキーが無効になりました。");
     }
 
-<<<<<<< HEAD
+
     // ページ読み込み時にユーザーの選択に基づいてサードパーティクッキーの使用を制御
     if (userConsent === 'accepted') {
         enableThirdPartyCookies();
@@ -141,12 +141,9 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.removeChild(testElement);
 });
 
-=======
     // ページ読み込み時にユーザーの選択に基づいてサードパーティクッキーの使用を制御
     if (userConsent === 'accepted') {
         enableThirdPartyCookies();
     } else if (userConsent === 'declined') {
         disableThirdPartyCookies();
     }
-
->>>>>>> 528aebd55260917ff2218dab291f15b37ac351c3
