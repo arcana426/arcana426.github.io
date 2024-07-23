@@ -1,3 +1,7 @@
+test-style {
+    display: block !important;
+}
+
 /* notification */
 #cookie-notification {
     position: fixed;
@@ -43,10 +47,6 @@
 
 .notification-content button#decline-cookies:hover {
     background-color: #c82333;
-}
-
-test-style {
-    display: block !important;
 }
 
 
