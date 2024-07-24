@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const testElement = document.createElement('div');
         testElement.classList.add('test-style'); // Add the class name for styling
     
-        // Append the element to the body
+        // Append the element to the body (required for styles to apply)
         document.body.appendChild(testElement);
     
         // Get the computed style of the element
@@ -83,16 +83,17 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error("Display style is not applied correctly.");
         }
     
-        // Remove the test element
-        document.body.removeChild(testElement);
-    
         // Overall CSS load status
         if (colorApplied && displayApplied) {
             console.log("style.css has been successfully loaded.");
         } else {
             console.error("style.css failed to load or some styles are not applied correctly.");
         }
+    
+        // Remove the test element
+        document.body.removeChild(testElement);
     });
+    
     
     
 
