@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const testElement = document.createElement('div');
         testElement.classList.add('test-style'); // Add the class name for styling
     
-        // Append the element to the body (required for styles to apply)
+        // Append the element to the body
         document.body.appendChild(testElement);
     
         // Get the computed style of the element
@@ -70,17 +70,21 @@ document.addEventListener('DOMContentLoaded', function() {
         const colorApplied = computedStyle.getPropertyValue('color') === 'rgb(255, 0, 0)'; // Red color
         const displayApplied = computedStyle.getPropertyValue('display') === 'block';
     
+        // Debugging messages
+        console.log('Computed style for color:', computedStyle.getPropertyValue('color'));
+        console.log('Computed style for display:', computedStyle.getPropertyValue('display'));
+    
         // Log messages based on the results
         if (colorApplied) {
             console.log("Color style is successfully applied.");
         } else {
-            console.error("Color style is not applied correctly.");
+            console.error("Color style is not applied correctly. Expected 'rgb(255, 0, 0)', but got '" + computedStyle.getPropertyValue('color') + "'.");
         }
     
         if (displayApplied) {
             console.log("Display style is successfully applied.");
         } else {
-            console.error("Display style is not applied correctly.");
+            console.error("Display style is not applied correctly. Expected 'block', but got '" + computedStyle.getPropertyValue('display') + "'.");
         }
     
         // Overall CSS load status
@@ -93,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Remove the test element
         document.body.removeChild(testElement);
     });
-    
+        
     
     
 
