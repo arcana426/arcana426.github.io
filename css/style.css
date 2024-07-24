@@ -1,4 +1,10 @@
 /* style.css */
+.test-style {
+    display: block; /* デフォルトのスタイルと異なるスタイルを指定 */
+    color: red; /* チェックするプロパティ */
+}
+
+
 body {
     font-family: Arial, sans-serif;
 }
@@ -49,10 +55,6 @@ body {
     background-color: #c82333;
 }
 
-.test-style {
-    display: block; /* デフォルトのスタイルと異なるスタイルを指定 */
-    color: red; /* チェックするプロパティ */
-}
 
 .grecaptcha-badge {
     visibility: visible !important;
