@@ -55,24 +55,32 @@ document.addEventListener('DOMContentLoaded', function() {
         script.setAttribute('nonce', nonce);
     });
 
-    // CSSファイルの読み込み確認
     document.addEventListener('DOMContentLoaded', function() {
+        // Create a test element
         const testElement = document.createElement('div');
-        testElement.classList.add('test-style');
+        testElement.classList.add('test-style'); // Add the class name for styling
+    
+        // Append the element to the body
         document.body.appendChild(testElement);
-
+    
+        // Get the computed style of the element
         const computedStyle = window.getComputedStyle(testElement);
-        const colorApplied = computedStyle.getPropertyValue('color') === 'rgb(255, 0, 0)'; // 'red'のRGB値
+    
+        // Check if the desired styles are applied
+        const colorApplied = computedStyle.getPropertyValue('color') === 'rgb(255, 0, 0)'; // Red color
         const displayApplied = computedStyle.getPropertyValue('display') === 'block';
-
+    
+        // Log messages based on the results
         if (colorApplied && displayApplied) {
             console.log("style.css has been successfully loaded.");
         } else {
-            console.error("style.css failed to load.");
+            console.error("style.css failed to load or styles are not applied correctly.");
         }
-
+    
+        // Remove the test element
         document.body.removeChild(testElement);
-    });   
+    });
+    
 
     
     // クッキー通知バーの表示・非表示
