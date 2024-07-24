@@ -71,15 +71,29 @@ document.addEventListener('DOMContentLoaded', function() {
         const displayApplied = computedStyle.getPropertyValue('display') === 'block';
     
         // Log messages based on the results
-        if (colorApplied && displayApplied) {
-            console.log("style.css has been successfully loaded.");
+        if (colorApplied) {
+            console.log("Color style is successfully applied.");
         } else {
-            console.error("style.css failed to load or styles are not applied correctly.");
+            console.error("Color style is not applied correctly.");
+        }
+    
+        if (displayApplied) {
+            console.log("Display style is successfully applied.");
+        } else {
+            console.error("Display style is not applied correctly.");
         }
     
         // Remove the test element
         document.body.removeChild(testElement);
+    
+        // Overall CSS load status
+        if (colorApplied && displayApplied) {
+            console.log("style.css has been successfully loaded.");
+        } else {
+            console.error("style.css failed to load or some styles are not applied correctly.");
+        }
     });
+    
     
 
     
