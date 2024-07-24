@@ -29,9 +29,9 @@
     http-equiv="Content-Security-Policy" 
     content="default-src 'self'; 
     script-src 'self' https://cdn.jsdelivr.net https://www.google.com https://www.gstatic.com https://www.googletagmanager.com https://fonts.googleapis.com https://fonts.gstatic.com 'nonce-12345'; 
-    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://bulma.io; 
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://bulma.io https://fonts.gstatic.com; 
     img-src 'self' data: https://arcana426.github.io https://www.google.com https://www.gstatic.com; 
-    font-src 'self' https://fonts.gstatic.com; 
+    font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; 
     frame-src https://www.google.com/recaptcha/; 
     connect-src 'self' https://www.google-analytics.com; 
     object-src 'none'; 
@@ -112,10 +112,8 @@
             </div>
         </footer>
     </body>
-    <script>
-            // script.jsの読み込みをチェック
-
-            setTimeout(function() {
+    <script type="text/javascript" nonce="12345">
+                    setTimeout(function() {
                 if (typeof window.scriptLoaded === 'undefined') {
                     console.error("script.jsの読み込みに失敗しました。");
                 } else {
