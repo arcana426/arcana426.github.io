@@ -55,19 +55,27 @@ document.addEventListener('DOMContentLoaded', function() {
         script.setAttribute('nonce', nonce);
     });
 
-    // style.cssの読み込み確認
-    const testElement = document.createElement('div');
-    testElement.classList.add('test-style');
-    document.body.appendChild(testElement);
+    document.addEventListener('DOMContentLoaded', function() {
+        // style.css が読み込まれているか確認
+        const testElement = document.createElement('div');
+        testElement.classList.add('test-style');
+        document.body.appendChild(testElement);
+    
+        const computedStyle = window.getComputedStyle(testElement);
+        const colorApplied = computedStyle.getPropertyValue('color') === 'rgb(255, 0, 0)'; // 'red' の RGB 値
+        const displayApplied = computedStyle.getPropertyValue('display') === 'block';
+    
+        if (colorApplied && displayApplied) {
+            console.log("style.css has been successfully loaded.");
+        } else {
+            console.error("style.css failed to load.");
+        }
+    
+        document.body.removeChild(testElement);
+    });
+    
 
-    const styleApplied = window.getComputedStyle(testElement).getPropertyValue('color') === 'red';
-    if (styleApplied) {
-        console.log("style.css has been successfully loaded.");
-    } else {
-        console.error("style.css failed to load.");
-    }
-    document.body.removeChild(testElement);
-
+    
     // クッキー通知バーの表示・非表示
     const cookieBanner = document.getElementById('notification');
     const userConsent = localStorage.getItem('userConsent');
