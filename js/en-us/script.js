@@ -1,40 +1,91 @@
-window.scriptLoaded = true;
+wwindow.scriptLoaded = true;
 
 console.log("script.js has been successfully loaded.");
 
 function onSubmit(token) {
-    document.getElementById('action-button').disabled = false;
-    console.log("reCAPTCHA検証に成功しました!");
+    const actionButton = document.getElementById('action-button');
+    if (actionButton) {
+        actionButton.disabled = false;
+        console.log("reCAPTCHA検証に成功しました!");
+    } else {
+        console.error("Action button not found!");
+    }
 }
 
 function moveToNewContent() {
     const originalContent = document.getElementById('original-content');
     const newContent = document.getElementById('new-content');
 
-    originalContent.classList.add('fade-out');
+    if (originalContent && newContent) {
+        originalContent.classList.add('fade-out');
 
-    originalContent.addEventListener('animationend', function () {
-        originalContent.style.display = 'none';
-        newContent.style.display = 'block';
-        newContent.classList.add('fade-in');
-    }, { once: true });
+        originalContent.addEventListener('animationend', function () {
+            originalContent.style.display = 'none';
+            newContent.style.display = 'block';
+            newContent.classList.add('fade-in');
+        }, { once: true });
+    } else {
+        if (!originalContent) {
+            console.error("Original content not found!");
+        }
+        if (!newContent) {
+            console.error("New content not found!");
+        }
+    }
 }
 
 function moveToNewerContent() {
     const newContent = document.getElementById('new-content');
     const newerContent = document.getElementById('newer-content');
 
-    newContent.classList.add('slide-out');
+    if (newContent && newerContent) {
+        newContent.classList.add('slide-out');
 
-    newContent.addEventListener('animationend', function () {
-        newContent.style.display = 'none';
-        newerContent.style.display = 'block';
-        newerContent.classList.add('zoom-in');
-    }, { once: true });
+        newContent.addEventListener('animationend', function () {
+            newContent.style.display = 'none';
+            newerContent.style.display = 'block';
+            newerContent.classList.add('zoom-in');
+        }, { once: true });
+    } else {
+        if (!newContent) {
+            console.error("New content not found!");
+        }
+        if (!newerContent) {
+            console.error("Newer content not found!");
+        }
+    }
 }
+
+// CSSファイルの読み込み確認
+document.addEventListener('DOMContentLoaded', function() {
+    const testElement = document.createElement('div');
+    testElement.classList.add('test-style');
+    document.body.appendChild(testElement);
+
+    const computedStyle = window.getComputedStyle(testElement);
+    const colorApplied = computedStyle.getPropertyValue('color') === 'rgb(255, 0, 0)';
+    const displayApplied = computedStyle.getPropertyValue('display') === 'block';
+
+    if (colorApplied && displayApplied) {
+        console.log("style.css has been successfully loaded.");
+    } else {
+        console.error("style.css failed to load or styles are not applied correctly.");
+        if (!colorApplied) {
+            console.error("Expected color 'rgb(255, 0, 0)' but got '" + computedStyle.getPropertyValue('color') + "'.");
+        }
+        if (!displayApplied) {
+            console.error("Expected display 'block' but got '" + computedStyle.getPropertyValue('display') + "'.");
+        }
+    }
+
+    document.body.removeChild(testElement);
+});
 
 // nonceを生成し、CSPメタタグに適用する関数
 document.addEventListener('DOMContentLoaded', function() {
+    const cookieBanner = document.getElementById('cookie-banner');
+    const acceptCookiesButton = document.getElementById('accept-cookies');
+    const declineCookiesButton = document.getElementById('decline-cookies');
     function generateNonce(length) {
         const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let nonce = '';
@@ -54,55 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
     scripts.forEach(script => {
         script.setAttribute('nonce', nonce);
     });
-
-    document.addEventListener('DOMContentLoaded', function() {
-        // Create a test element
-        const testElement = document.createElement('div');
-        testElement.classList.add('test-style'); // Add the class name for styling
     
-        // Append the element to the body
-        document.body.appendChild(testElement);
-    
-        // Get the computed style of the element
-        const computedStyle = window.getComputedStyle(testElement);
-    
-        // Check if the desired styles are applied
-        const colorApplied = computedStyle.getPropertyValue('color') === 'rgb(255, 0, 0)'; // Red color
-        const displayApplied = computedStyle.getPropertyValue('display') === 'block';
-    
-        // Debugging messages
-        console.log('Computed style for color:', computedStyle.getPropertyValue('color'));
-        console.log('Computed style for display:', computedStyle.getPropertyValue('display'));
-    
-        // Log messages based on the results
-        if (colorApplied) {
-            console.log("Color style is successfully applied.");
-        } else {
-            console.error("Color style is not applied correctly. Expected 'rgb(255, 0, 0)', but got '" + computedStyle.getPropertyValue('color') + "'.");
-        }
-    
-        if (displayApplied) {
-            console.log("Display style is successfully applied.");
-        } else {
-            console.error("Display style is not applied correctly. Expected 'block', but got '" + computedStyle.getPropertyValue('display') + "'.");
-        }
-    
-        // Overall CSS load status
-        if (colorApplied && displayApplied) {
-            console.log("style.css has been successfully loaded.");
-        } else {
-            console.error("style.css failed to load or some styles are not applied correctly.");
-        }
-    
-        // Remove the test element
-        document.body.removeChild(testElement);
-    });
-        
-    
-    
-
-    
-    // クッキー通知バーの表示・非表示
     const cookieBanner = document.getElementById('notification');
     const userConsent = localStorage.getItem('userConsent');
 
@@ -110,13 +113,13 @@ document.addEventListener('DOMContentLoaded', function() {
         cookieBanner.style.display = 'block';
     }
 
-    document.getElementById('accept-cookies').addEventListener('click', function() {
+    acceptCookiesButton.addEventListener('click', function() {
         localStorage.setItem('userConsent', 'accepted');
         cookieBanner.style.display = 'none';
         enableThirdPartyCookies();
     });
 
-    document.getElementById('decline-cookies').addEventListener('click', function() {
+    declineCookiesButton.addEventListener('click', function() {
         localStorage.setItem('userConsent', 'declined');
         cookieBanner.style.display = 'none';
         disableThirdPartyCookies();
@@ -135,4 +138,5 @@ document.addEventListener('DOMContentLoaded', function() {
     } else if (userConsent === 'declined') {
         disableThirdPartyCookies();
     }
+
 });

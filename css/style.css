@@ -4,6 +4,16 @@
     color: red; /* チェックするプロパティ */
 }
 
+.notification.is-fixed-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    padding: 1em;
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    display: none; /* 初期状態では非表示に */
+}
 
 body {
     font-family: Arial, sans-serif;
