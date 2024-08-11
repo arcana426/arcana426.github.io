@@ -157,38 +157,3 @@ document.addEventListener('DOMContentLoaded', function() {
     scripts.forEach(script => {
         script.setAttribute('nonce', nonce);
     });
-    
-    const cookieBanner = document.getElementById('notification');
-    const userConsent = localStorage.getItem('userConsent');
-
-    if (!userConsent) {
-        cookieBanner.style.display = 'block';
-    }
-
-    acceptCookiesButton.addEventListener('click', function() {
-        localStorage.setItem('userConsent', 'accepted');
-        cookieBanner.style.display = 'none';
-        enableThirdPartyCookies();
-    });
-
-    declineCookiesButton.addEventListener('click', function() {
-        localStorage.setItem('userConsent', 'declined');
-        cookieBanner.style.display = 'none';
-        disableThirdPartyCookies();
-    });
-
-    function enableThirdPartyCookies() {
-        console.log("サードパーティクッキーが有効になりました。");
-    }
-
-    function disableThirdPartyCookies() {
-        console.log("サードパーティクッキーが無効になりました。");
-    }
-
-    if (userConsent === 'accepted') {
-        enableThirdPartyCookies();
-    } else if (userConsent === 'declined') {
-        disableThirdPartyCookies();
-    }
-
-});
