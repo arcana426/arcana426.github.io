@@ -52,12 +52,18 @@
     </head>
 
     <body>
-        <div id="cookie-banner" class="notification is-fixed-bottom">
-            このサイトはクッキーを使用しています。<br>
-            <button id="accept-cookies" class="button is-primary">許可する</button>
-            <button id="decline-cookies" class="button is-secondary">許可しない</button>
+         <div class="container">
+        <!-- 全画面のクッキー促進メッセージ -->
+        <div id="fullscreen-message" class="box">
+            <div>
+                <p>このサイトでは、サードパーティのクッキーが必要です。</p>
+                <p>クッキーを有効にしてください。</p>
+                <button id="accept-cookies" class="button is-primary">クッキーを受け入れる</button>
+                <p>下のボタンはずっとクッキーを許可する方法を確認するボタンです。</p>
+                <button id="enable-cookies" class="button is-info">設定方法を確認する</button>
+            </div>
         </div>
-
+    </div>
         <section class="section" id="original-content">
             <div class="container">
                 <p class="is-size-4">reCAPTCHAを実施して次のページへ</p>
@@ -114,5 +120,4 @@
     </body>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2HVBZMGKSE"></script>
-
 </html>
