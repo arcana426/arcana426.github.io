@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (consent === null) {
             fullscreenMessage.style.display = "flex";
         } else {
-            // クッキー同意済みなら何らかの処理をここに追加
+            // クッキー同意済みなら最初のdivタグを表示
         }
     }
 
