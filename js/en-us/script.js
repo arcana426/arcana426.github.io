@@ -2,10 +2,11 @@ wwindow.scriptLoaded = true;
 
 console.log("script.js has been successfully loaded.");
 
-document.addEventListener("DOMContentLoaded", function() {
+ document.addEventListener("DOMContentLoaded", function() {
     const fullscreenMessage = document.getElementById("fullscreen-message");
     const acceptButton = document.getElementById("accept-cookies");
     const enableCookiesButton = document.getElementById("enable-cookies");
+    const originalContent = document.getElementById("original-content");
 
     // クッキーを取得
     function getCookie(name) {
@@ -27,9 +28,11 @@ document.addEventListener("DOMContentLoaded", function() {
     function checkCookieConsent() {
         const consent = getCookie("cookieConsent");
         if (consent === null) {
-            fullscreenMessage.style.display = "flex";
+            fullscreenMessage.style.display = "flex"; // クッキー同意バナーを表示
+            originalContent.style.display = "none"; // original-content を非表示
         } else {
-            // クッキー同意済みなら最初のdivタグを表示
+            fullscreenMessage.style.display = "none"; // クッキー同意バナーを非表示
+            originalContent.style.display = "block"; // original-content を表示
         }
     }
 
@@ -37,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
     acceptButton.addEventListener("click", function() {
         setCookie("cookieConsent", "true", 30); // 30日間有効なクッキーを設定
         fullscreenMessage.style.display = "none"; // 全画面メッセージを非表示にする
+        originalContent.style.display = "block"; // クッキー同意後に original-content を表示
     });
 
     // クッキーの有効化ボタンのクリックイベント
@@ -47,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // 初期チェック
     checkCookieConsent();
 });
+
 
 
 function onSubmit(token) {
