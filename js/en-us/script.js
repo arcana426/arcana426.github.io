@@ -52,8 +52,6 @@ console.log("script.js has been successfully loaded.");
     checkCookieConsent();
 });
 
-
-
 function onSubmit(token) {
     const actionButton = document.getElementById('action-button');
     if (actionButton) {
