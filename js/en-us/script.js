@@ -2,6 +2,53 @@ wwindow.scriptLoaded = true;
 
 console.log("script.js has been successfully loaded.");
 
+document.addEventListener("DOMContentLoaded", function() {
+    const fullscreenMessage = document.getElementById("fullscreen-message");
+    const acceptButton = document.getElementById("accept-cookies");
+    const enableCookiesButton = document.getElementById("enable-cookies");
+
+    // クッキーを取得
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return null;
+    }
+
+    // クッキーを設定
+    function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = `${name}=${value}; ${expires}; path=/`;
+    }
+
+    // クッキー同意の確認
+    function checkCookieConsent() {
+        const consent = getCookie("cookieConsent");
+        if (consent === null) {
+            fullscreenMessage.style.display = "flex";
+        } else {
+            // クッキー同意済みなら何らかの処理をここに追加
+        }
+    }
+
+    // クッキー同意バナーを表示するボタンのクリックイベント
+    acceptButton.addEventListener("click", function() {
+        setCookie("cookieConsent", "true", 30); // 30日間有効なクッキーを設定
+        fullscreenMessage.style.display = "none"; // 全画面メッセージを非表示にする
+    });
+
+    // クッキーの有効化ボタンのクリックイベント
+    enableCookiesButton.addEventListener("click", function() {
+        window.open('https://support.google.com/accounts/answer/61416', '_blank');
+    });
+
+    // 初期チェック
+    checkCookieConsent();
+});
+
+
 function onSubmit(token) {
     const actionButton = document.getElementById('action-button');
     if (actionButton) {
