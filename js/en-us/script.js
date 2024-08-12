@@ -29,10 +29,10 @@ console.log("script.js has been successfully loaded.");
         const consent = getCookie("cookieConsent");
         if (consent === null) {
             fullscreenMessage.style.display = "flex"; // クッキー同意バナーを表示
-            originalContent.style.display = "none"; // original-content を非表示
+            originalcontent.style.display = "none"; // original-content を非表示
         } else {
             fullscreenMessage.style.display = "none"; // クッキー同意バナーを非表示
-            originalContent.style.display = "block"; // original-content を表示
+            originalcontent.style.display = "block"; // original-content を表示
         }
     }
 
