@@ -1,8 +1,8 @@
-wwindow.scriptLoaded = true;
+window.scriptLoaded = true;
 
 console.log("script.js has been successfully loaded.");
 
- document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const fullscreenMessage = document.getElementById("fullscreen-message");
     const acceptButton = document.getElementById("accept-cookies");
     const enableCookiesButton = document.getElementById("enable-cookies");
@@ -29,22 +29,22 @@ console.log("script.js has been successfully loaded.");
         const consent = getCookie("cookieConsent");
         if (consent === null) {
             fullscreenMessage.style.display = "flex"; // クッキー同意バナーを表示
-            originalcontent.style.display = "none"; // original-content を非表示
+            originalContent.style.display = "none"; // original-content を非表示
         } else {
             fullscreenMessage.style.display = "none"; // クッキー同意バナーを非表示
-            originalcontent.style.display = "block"; // original-content を表示
+            originalContent.style.display = "block"; // original-content を表示
         }
     }
 
     // クッキー同意バナーを表示するボタンのクリックイベント
-    acceptButton.addEventListener("click", function() {
+    acceptButton.addEventListener("click", function () {
         setCookie("cookieConsent", "true", 30); // 30日間有効なクッキーを設定
         fullscreenMessage.style.display = "none"; // 全画面メッセージを非表示にする
         originalContent.style.display = "block"; // クッキー同意後に original-content を表示
     });
 
     // クッキーの有効化ボタンのクリックイベント
-    enableCookiesButton.addEventListener("click", function() {
+    enableCookiesButton.addEventListener("click", function () {
         window.open('https://support.google.com/accounts/answer/61416', '_blank');
     });
 
@@ -107,7 +107,7 @@ function moveToNewerContent() {
 }
 
 // CSSファイルの読み込み確認
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const testElement = document.createElement('div');
     testElement.classList.add('test-style');
     document.body.appendChild(testElement);
@@ -132,10 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // nonceを生成し、CSPメタタグに適用する関数
-document.addEventListener('DOMContentLoaded', function() {
-    const cookieBanner = document.getElementById('cookie-banner');
-    const acceptCookiesButton = document.getElementById('accept-cookies');
-    const declineCookiesButton = document.getElementById('decline-cookies');
+document.addEventListener('DOMContentLoaded', function () {
     function generateNonce(length) {
         const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let nonce = '';
@@ -155,3 +152,4 @@ document.addEventListener('DOMContentLoaded', function() {
     scripts.forEach(script => {
         script.setAttribute('nonce', nonce);
     });
+});
