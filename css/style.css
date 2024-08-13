@@ -39,7 +39,7 @@ footer {
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    margin-top: 2rem; /* 上部にスペースを追加 */
+    margin-top: 1rem; /* 上部にスペースを追加 */
 }
 
 .button {
