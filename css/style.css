@@ -38,7 +38,8 @@ footer {
     background: rgba(255, 255, 255, 0.9);
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-top: 1rem; /* 上部にスペースを追加 */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* 影を強くして、広がりを調整 */
 }
 
 .button {
