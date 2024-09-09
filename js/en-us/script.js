@@ -62,6 +62,8 @@ function onSubmit(token) {
     }
 }
 
+document.getElementById('move-on-button').addEventListener('click', moveToNewerContent);
+
 function moveToNewContent() {
     const originalContent = document.getElementById('original-content');
     const newContent = document.getElementById('new-content');
