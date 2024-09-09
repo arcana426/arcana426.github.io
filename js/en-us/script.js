@@ -62,7 +62,7 @@ function onSubmit(token) {
     }
 }
 
-document.getElementById('move-on-button').addEventListener('click', moveToNewerContent);
+document.getElementById('action-button').addEventListener('click', moveToNewContent);
 
 function moveToNewContent() {
     const originalContent = document.getElementById('original-content');
@@ -85,6 +85,8 @@ function moveToNewContent() {
         }
     }
 }
+
+document.getElementById('move-on-button').addEventListener('click', moveToNewerContent);
 
 function moveToNewerContent() {
     const newContent = document.getElementById('new-content');
