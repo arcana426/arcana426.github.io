@@ -1,1 +1,1 @@
-arcana426.github.io/info.html
+[test link](https://arcana426.github.io/info.html)
