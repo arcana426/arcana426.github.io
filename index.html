@@ -1,1 +1,27 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Redirecting…</title>
 
+  <!-- クライアント側リダイレクト（サーバー側301が使えない場合のフォールバック） -->
+  <meta http-equiv="refresh" content="0;url=https://example.com/" />
+  <link rel="canonical" href="https://example.com/" />
+
+  <script>
+    (function(){
+      var target = "https://example.com/";
+      try {
+        location.replace(target); // 履歴に残さない
+      } catch (e) {
+        location.href = target;
+      }
+    })();
+  </script>
+</head>
+<body>
+  <p>ページを移動しています。自動的に転送されない場合は、
+    <a href="https://example.com/">こちらをクリック</a>してください。</p>
+</body>
+</html>
